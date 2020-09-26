@@ -4,7 +4,7 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; ;; sync' after modifying this file!
-(setq fancy-splash-image "")
+;; (setq fancy-splash-image "")
 
 
 ;; workspace
@@ -20,5 +20,26 @@
             (setq web-mode-code-indent-offset 4)))
 
 
-;; https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E8%AE%A9Emacs%E4%B8%BA%E4%BD%A0%E8%87%AA%E5%8A%A8%E6%8F%92%E5%85%A5%E5%86%85%E5%AE%B9(Emacs%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97).org
-;; http://jixiuf.github.io/blog/yasnippet-auto-insert-mode%E6%95%B4%E5%90%88/
+;; file template (auto-insert + yasnippet)
+;; https://github.com/hlissner/doom-emacs/issues/2134
+;; (set-file-template! "^main\\.c\\(?:c\\|pp\\)$" :trigger "__main.cpp" :mode 'c++-mode)
+
+
+;; mode
+(require 'capnp-mode)
+(use-package capnproto
+  :ensure t
+  :mode ("\\.capnp\\'" . capnp-mode))
+  ;; :config
+  ;; ((require 'capnp-mode)
+  ;; (add-to-list 'auto-mode-alist '("\\.capnp\\'" . capnp-mode))))
+
+
+;; cmake company
+;; (use-package cmake-mode
+;;   :ensure t
+;;   :defines (company-backends)
+;;   :mode (("CMakeLists\\.txt\\'" . cmake-mode)
+;;          ("\\.cmake\\'" . cmake-mode))
+;;   :config (after! company
+;;             (add-to-list 'company-backends 'company-cmake)))

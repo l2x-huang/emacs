@@ -12,6 +12,11 @@
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta))
 
+
+;; ESC hook
+(add-hook 'doom-escape-hook t)
+
+
 ;; custom mappings
 (map!
  ;; Ensure there are no conflicts

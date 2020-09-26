@@ -49,6 +49,12 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 ;
+;; (package! company-cmake)
+
+(package! capnproto
+  :recipe (:host github
+           :repo "capnproto/capnproto"
+           :files ("highlighting/emacs/*.el")))
 
 ;; code completion fuzzy matching
 (package! company-flx)
