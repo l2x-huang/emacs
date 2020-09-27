@@ -51,6 +51,8 @@
 ;
 ;; (package! company-cmake)
 
+(package! nvm)
+
 (package! capnproto
   :recipe (:host github
            :repo "capnproto/capnproto"

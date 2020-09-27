@@ -3,7 +3,11 @@
 ;;  https://www.gnu.org/software/emacs/manual/html_node/efaq/Backspace-invokes-help.html
 ;; (global-set-key "\C-h" 'delete-backward-char)
 ;; (global-set-key "\C-xh" 'help-command)
-(keyboard-translate ?\C-h ?\C-?)
+;; (keyboard-translate ?\C-h ?\C-?)
+;;
+(add-hook 'after-init-hook
+          (lambda()
+            (keyboard-translate ?\C-h ?\C-?)))
 
 ;; set meta key
 (when (eq system-type 'gnu/linux)
@@ -16,12 +20,13 @@
 ;; ESC hook
 (add-hook 'doom-escape-hook t)
 
-
 ;; custom mappings
 (map!
  ;; Ensure there are no conflicts
  ;; :nmvo doom-leader-key nil
  ;; :nmvo doom-localleader-key nil
+
+ ;; "\C-h"         #'delete-backward-char
 
  :nimvo "C-f"    #'+default/search-project
  :nimvo "C-p"    #'projectile-find-file
