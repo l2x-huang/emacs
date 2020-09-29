@@ -43,3 +43,12 @@
 ;;          ("\\.cmake\\'" . cmake-mode))
 ;;   :config (after! company
 ;;             (add-to-list 'company-backends 'company-cmake)))
+
+;;
+
+
+;; dired hide dotfiles
+(add-hook 'dired-load-hook
+          (lambda()
+            (require 'dired-x)
+            (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))))

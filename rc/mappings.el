@@ -5,9 +5,13 @@
 ;; (global-set-key "\C-xh" 'help-command)
 ;; (keyboard-translate ?\C-h ?\C-?)
 ;;
-(add-hook 'after-init-hook
-          (lambda()
-            (keyboard-translate ?\C-h ?\C-?)))
+;; (add-hook 'before-init-hook
+;;           (lambda()
+;;             (keyboard-translate ?\C-h ?\C-?)))
+;;
+;; NOTE: `keyboard-translate' doesn't work on daemon mode
+;; https://stackoverflow.com/questions/7747167/emacs-daemon-swapping-keys
+(define-key key-translation-map [?\C-h] [?\C-?])
 
 ;; set meta key
 (when (eq system-type 'gnu/linux)
@@ -16,9 +20,8 @@
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta))
 
-
 ;; ESC hook
-(add-hook 'doom-escape-hook t)
+;; (add-hook 'doom-escape-hook t)
 
 ;; custom mappings
 (map!
@@ -42,6 +45,7 @@
   :map dired-mode-map
   :n "K"         #'dired-create-directory
   :n "N"         #'find-file
+  :n "H"         #'dired-omit-mode
   :n "d"         #'dired-do-delete
   :n "e"         #'dired-ediff-files
   :n "r"         #'dired-do-rename
