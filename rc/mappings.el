@@ -23,6 +23,14 @@
 ;; ESC hook
 ;; (add-hook 'doom-escape-hook t)
 
+
+;; c++ 头文件与源文件切换
+(global-set-key (kbd "<f5>") 'dap-debug)
+(global-set-key (kbd "<f6>") 'dap-debug-edit-template)
+(global-set-key (kbd "<f7>") 'dap-hydra)
+(global-set-key (kbd "<f4>") 'ff-find-other-file)
+;; (global-set-key (kbd "<f4>") 'projectile-find-file)
+
 ;; custom mappings
 (map!
  ;; Ensure there are no conflicts
@@ -39,6 +47,30 @@
  :n ";c"         #'doom/find-file-in-private-config
  :n ";s"         #'switch-to-buffer
  :n ";d"         #'dired-jump
+
+ :nv "c"  nil
+
+  ;; Window Movements
+ "C-h"    #'evil-window-left
+ "C-j"    #'evil-window-down
+ "C-k"    #'evil-window-up
+ "C-l"    #'evil-window-right
+ "A-q"    #'delete-window
+ "C-`"      #'+popup/toggle
+ "<C-tab>"  #'+popup/other
+
+ :n "-" #'ranger
+
+ ;; eshell
+ :n  ";`"      #'eshell
+ (:map eshell-mode
+  :n "q" #'eshell/exit)
+
+ ;; leader
+ ;; (:leader
+ ;;  :desc "shell"   :n "`" #'eshell
+ ;;  )
+ ;;
 
  ;; dired
  (:after dired

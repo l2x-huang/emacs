@@ -52,3 +52,28 @@
           (lambda()
             (require 'dired-x)
             (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))))
+
+
+;; auto save
+;; refer: https://emacs.stackexchange.com/questions/265/how-to-auto-save-buffers-when-emacs-loses-focus
+;; (eval-when-compile (require 'cl-lib))
+;; (defun autosave ()
+;;   (cl-letf (((symbol-function 'message) #'format))
+;;           (save-some-buffers t)))
+
+;; lost focus
+;; refer: https://so.nwalsh.com/2020/02/29/dot-emacs
+;; (add-hook 'emacs-startup-hook
+;;           (lambda ()
+;;             (if (boundp 'after-focus-change-function)
+;;                 (add-function :after after-focus-change-function
+;;                               (lambda ()
+;;                                 (unless (frame-focus-state)
+;;                                   (autosave))))
+;;               (add-hook 'after-focus-change-function 'autosave))
+;; ))
+
+(add-hook 'focus-out-hook
+          (lambda ()
+            (interactive)
+            (save-some-buffers t)))
