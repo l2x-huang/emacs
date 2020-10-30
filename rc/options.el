@@ -77,3 +77,9 @@
           (lambda ()
             (interactive)
             (save-some-buffers t)))
+
+;; keyword
+;; https://emacs.stackexchange.com/questions/9583/how-to-treat-underscore-as-part-of-the-word
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?_ "w")))

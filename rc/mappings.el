@@ -43,6 +43,7 @@
  :nimvo "C-p"    #'projectile-find-file
  :n "TAB"        #'evil-window-next
  :n [tab]        #'evil-window-next
+ :n "Q"          #'+workspace/delete
 
  :n ";c"         #'doom/find-file-in-private-config
  :n ";s"         #'switch-to-buffer
