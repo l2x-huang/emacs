@@ -5,6 +5,47 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; ;; sync' after modifying this file!
 ;; (setq fancy-splash-image "")
+;;
+;; lineheight
+;;
+;; Set the padding between lines
+(defvar line-padding 1)
+(defun add-line-padding ()
+  "Add extra padding between lines"
+
+  ; remove padding overlays if they already exist
+  (let ((overlays (overlays-at (point-min))))
+    (while overlays
+      (let ((overlay (car overlays)))
+        (if (overlay-get overlay 'is-padding-overlay)
+            (delete-overlay overlay)))
+      (setq overlays (cdr overlays))))
+
+  ; add a new padding overlay
+  (let ((padding-overlay (make-overlay (point-min) (point-max))))
+    (overlay-put padding-overlay 'is-padding-overlay t)
+    (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
+    (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
+  (setq mark-active nil))
+
+
+(add-hook 'buffer-list-update-hook 'add-line-padding)
+
+
+;; winpos
+(add-hook 'before-make-frame-hook
+          (lambda()
+            ;; (set-frame-position (selected-frame) 285 0)
+            (setq default-frame-alist
+                  '((height . 32) (width . 121) (left . 292) (top . 0)))))
+
+;; scrollbar
+;; refer: https://emacs.stackexchange.com/questions/23773/disable-scrollbar-on-new-frame
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
 
 ;; workspace
