@@ -24,10 +24,11 @@
 ;; (add-hook 'doom-escape-hook t)
 
 
-;; c++ 头文件与源文件切换
 (global-set-key (kbd "<f5>") 'dap-debug)
 (global-set-key (kbd "<f6>") 'dap-debug-edit-template)
 (global-set-key (kbd "<f7>") 'dap-hydra)
+(global-set-key (kbd "<f9>") 'dap-breakpoint-toggle)
+;; c++ 头文件与源文件切换
 (global-set-key (kbd "<f4>") 'ff-find-other-file)
 ;; (global-set-key (kbd "<f4>") 'projectile-find-file)
 
@@ -88,5 +89,12 @@
   :n "p"         #'dired-view-file
   :n "h"         #'dired-up-directory
   :n "l"         #'dired-find-file)
+
+ ;; cc-mode
+ ;; https://github.com/hlissner/doom-emacs/issues/510#issuecomment-379409784
+ (:after cc-mode
+  :map c-mode-base-map
+  "{" #'c-electric-brace
+  )
 
  ) ;; map

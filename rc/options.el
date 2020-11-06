@@ -12,12 +12,14 @@
   (setq projectile-project-search-path '("~/GitRepos/" "~/workspace")))
 
 
-;; indent
-(add-hook 'web-mode-hook
-          (lambda()
-            (setq web-mode-markup-indent-offset 2)
-            (setq web-mode-css-indent-offset 4)
-            (setq web-mode-code-indent-offset 4)))
+;; indent by editorconfig
+;; https://github.com/hlissner/doom-emacs/issues/50#issuecomment-299117664
+;; (add-hook 'web-mode-hook
+;;           (lambda()
+;;             (setq web-mode-markup-indent-offset 2)
+;;             (setq web-mode-css-indent-offset 4)
+;;             (setq web-mode-code-indent-offset 4)))
+
 
 
 ;; file template (auto-insert + yasnippet)
@@ -28,7 +30,6 @@
 ;; mode
 (require 'capnp-mode)
 (use-package capnproto
-  :ensure t
   :mode ("\\.capnp\\'" . capnp-mode))
   ;; :config
   ;; ((require 'capnp-mode)
