@@ -31,13 +31,17 @@
 
 (add-hook 'buffer-list-update-hook 'add-line-padding)
 
-
 ;; winpos
 (add-hook 'before-make-frame-hook
           (lambda()
             ;; (set-frame-position (selected-frame) 285 0)
             (setq default-frame-alist
                   '((height . 32) (width . 121) (left . 292) (top . 0)))))
+
+;; reload-theme
+(add-hook 'server-after-make-frame-hook
+          (lambda()
+            (doom/reload-theme)))
 
 ;; scrollbar
 ;; refer: https://emacs.stackexchange.com/questions/23773/disable-scrollbar-on-new-frame
