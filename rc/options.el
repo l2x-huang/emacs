@@ -1,6 +1,8 @@
 ;; refer:
 ;;   https://git.jeremydormitzer.com/jdormit/dotfiles/src/commit/8266a2c24a1077ff740e570dba25df7150559b1e/emacs/init.org
 
+;; default c style
+(setq c-default-style "cc-mode")
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; ;; sync' after modifying this file!
